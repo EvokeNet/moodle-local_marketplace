@@ -8,13 +8,13 @@
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 
-require(__DIR__.'/../../config.php');
+require(__DIR__.'/../../../config.php');
 
 require_login();
 
 $context = context_system::instance();
 
-$PAGE->set_url('/local/marketplace/products.php');
+$PAGE->set_url('/local/marketplace/admin/products.php');
 $PAGE->set_title(get_string('products', 'local_marketplace'));
 $PAGE->set_heading(get_string('products', 'local_marketplace'));
 $PAGE->set_context($context);
@@ -23,9 +23,9 @@ $PAGE->set_context($context);
 
 echo $OUTPUT->header();
 
-$renderer = $PAGE->get_renderer('local_marketplace');
+$renderer = $PAGE->get_renderer('local_marketplace', 'admin');
 
-$contentrenderable = new \local_marketplace\output\products($context);
+$contentrenderable = new \local_marketplace\output\admin\products($context);
 
 echo $renderer->render($contentrenderable);
 

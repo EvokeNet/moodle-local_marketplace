@@ -1,6 +1,6 @@
 <?php
 
-namespace local_marketplace\output;
+namespace local_marketplace\output\admin;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -14,7 +14,7 @@ use renderer_base;
  * @copyright   2021 World Bank Group <https://worldbank.org>
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
-class products implements renderable, templatable {
+class index implements renderable, templatable {
     protected $context;
 
     public function __construct($context) {

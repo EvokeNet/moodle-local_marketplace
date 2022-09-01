@@ -1,6 +1,6 @@
 <?php
 
-namespace local_marketplace\output;
+namespace local_marketplace\output\admin;
 
 defined('MOODLE_INTERNAL') || die();
 

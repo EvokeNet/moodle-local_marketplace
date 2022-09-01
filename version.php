@@ -15,3 +15,6 @@ $plugin->release = '0.0.1';
 $plugin->version = 2022071800;
 $plugin->requires = 2022041200;
 $plugin->maturity = MATURITY_STABLE;
+$plugin->dependencies = [
+    'local_evokegame' => 2022071800
+];

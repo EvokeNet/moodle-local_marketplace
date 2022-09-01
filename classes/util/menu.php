@@ -15,25 +15,25 @@ class menu {
 
         $secondary->add(
             get_string('marketplace', 'local_marketplace'),
-            new moodle_url('/local/marketplace/admin.php'),
+            new moodle_url('/local/marketplace/admin/index.php'),
             navigation_node::TYPE_CUSTOM
         );
 
         $secondary->add(
             get_string('orders', 'local_marketplace'),
-            new moodle_url('/local/marketplace/orders.php'),
+            new moodle_url('/local/marketplace/admin/orders.php'),
             navigation_node::TYPE_CUSTOM
         );
 
         $secondary->add(
             get_string('products', 'local_marketplace'),
-            new moodle_url('/local/marketplace/products.php'),
+            new moodle_url('/local/marketplace/admin/products.php'),
             navigation_node::TYPE_CUSTOM
         );
 
         $secondary->add(
             get_string('categories', 'local_marketplace'),
-            new moodle_url('/local/marketplace/categories.php'),
+            new moodle_url('/local/marketplace/admin/categories.php'),
             navigation_node::TYPE_CUSTOM
         );
     }
