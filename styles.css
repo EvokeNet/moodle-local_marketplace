@@ -53,3 +53,27 @@
 .path-local-marketplace .form-singlebutton {
     display: initial;
 }
+
+.path-local-marketplace .carousel {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.path-local-marketplace .carousel .carousel-inner img {
+    border-top-left-radius: calc(0.5rem - 1px);
+    border-top-right-radius: calc(0.5rem - 1px);
+}
+
+.path-local-marketplace .card-footer .info {
+    display: flex;
+    align-items: center;
+}
+
+.path-local-marketplace .card-footer .icon {
+    width: 24px;
+    height: initial;
+}
+
+.path-local-marketplace .card-footer .price {
+    font-size: 18px;
+}

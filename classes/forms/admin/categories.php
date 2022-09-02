@@ -6,6 +6,13 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot.'/lib/formslib.php');
 
+/**
+ * Categories form.
+ *
+ * @package     local_marketplace
+ * @copyright   2022 World Bank Group <https://worldbank.org>
+ * @author      Willian Mano <willianmanoaraujo@gmail.com>
+ */
 class categories extends \moodleform {
     /**
      * The form definition.

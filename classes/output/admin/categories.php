@@ -7,11 +7,12 @@ defined('MOODLE_INTERNAL') || die();
 use renderable;
 use templatable;
 use renderer_base;
+use local_marketplace\local\entities\category;
 
 /**
  * Marketplace renderable class.
  *
- * @copyright   2021 World Bank Group <https://worldbank.org>
+ * @copyright   2022 World Bank Group <https://worldbank.org>
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 class categories implements renderable, templatable {
@@ -22,12 +23,10 @@ class categories implements renderable, templatable {
     }
 
     public function export_for_template(renderer_base $output) {
-        global $DB;
-
-        $categories = $DB->get_records('marketplace_categories');
+        $categoryentity = new category();
 
         return [
-            'categories' => array_values($categories)
+            'categories' => $categoryentity->get_all()
         ];
     }
 }

@@ -1,34 +1,42 @@
 <div class="my-2">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card shadow-none border">
-                <img class="card-img-top" src="https://via.placeholder.com/300x180.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
+        {{#products}}
+            <div class="col-md-4">
+                <div class="card shadow-none border my-2">
+                    <div id="images-{{id}}" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {{#images}}
+                                <div class="carousel-item {{#active}}active{{/active}}">
+                                    <img class="d-block w-100" src="{{fileurl}}">
+                                </div>
+                            {{/images}}
+                        </div>
+                        <a class="carousel-control-prev" href="#images-{{id}}" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">{{#str}}previous, local_marketplace{{/str}}</span>
+                        </a>
+                        <a class="carousel-control-next" href="#images-{{id}}" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">{{#str}}next, local_marketplace{{/str}}</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{name}}</h5>
+                        <p class="card-text">{{description}}</p>
+                    </div>
+                    <div class="card-footer d-flex">
+                        <div class="info">
+                            <div class="icon">
+                                <img class="evocoin black" src="{{config.wwwroot}}/local/evokegame/pix/evocoin.svg" alt="Evocoin">
+                            </div>
+                            <div class="price">{{price}}</div>
+                        </div>
+                        <div class="buttons ml-auto">
+                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card shadow-none border">
-                <img class="card-img-top" src="https://via.placeholder.com/300x180.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card shadow-none border">
-                <img class="card-img-top" src="https://via.placeholder.com/300x180.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
-                </div>
-            </div>
-        </div>
+        {{/products}}
     </div>
 </div>

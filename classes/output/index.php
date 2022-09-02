@@ -4,6 +4,7 @@ namespace local_marketplace\output;
 
 defined('MOODLE_INTERNAL') || die();
 
+use local_marketplace\local\entities\product;
 use renderable;
 use templatable;
 use renderer_base;
@@ -11,7 +12,7 @@ use renderer_base;
 /**
  * Marketplace renderable class.
  *
- * @copyright   2021 World Bank Group <https://worldbank.org>
+ * @copyright   2022 World Bank Group <https://worldbank.org>
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 class index implements renderable, templatable {
@@ -22,6 +23,10 @@ class index implements renderable, templatable {
     }
 
     public function export_for_template(renderer_base $output) {
-        return [];
+        $productentity = new product();
+
+        return [
+            'products' => $productentity->get_all()
+        ];
     }
 }

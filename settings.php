@@ -12,4 +12,4 @@ defined('MOODLE_INTERNAL') || die;
 
 $ADMIN->add('root', new admin_category('evoke_core', 'Evoke'));
 $ADMIN->add('evoke_core', new admin_externalpage('evoke_marketplace', 'Marketplace',
-    new moodle_url('/local/marketplace/admin.php')));
+    new moodle_url('/local/marketplace/admin/index.php')));

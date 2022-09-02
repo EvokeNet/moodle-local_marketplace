@@ -15,6 +15,12 @@ defined('MOODLE_INTERNAL') || die;
 use plugin_renderer_base;
 use renderable;
 
+/**
+ * Marketplace renderable class.
+ *
+ * @copyright   2022 World Bank Group <https://worldbank.org>
+ * @author      Willian Mano <willianmanoaraujo@gmail.com>
+ */
 class renderer extends plugin_renderer_base {
     public function render_index(renderable $page) {
         $data = $page->export_for_template($this);

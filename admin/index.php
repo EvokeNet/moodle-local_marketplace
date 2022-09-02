@@ -1,16 +1,18 @@
 <?php
 
 /**
- * Configure course badges.
+ * Index admin page.
  *
- * @package     mod_evokeportfolio
- * @copyright   2021 World Bank Group <https://worldbank.org>
+ * @package     local_marketplace
+ * @copyright   2022 World Bank Group <https://worldbank.org>
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 
 require(__DIR__.'/../../../config.php');
 
 require_login();
+$context = context_system::instance();
+require_capability('moodle/site:config', $context);
 
 $context = context_system::instance();
 

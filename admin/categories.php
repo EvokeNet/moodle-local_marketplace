@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Configure course badges.
+ * Categories admin page.
  *
- * @package     mod_evokeportfolio
- * @copyright   2021 World Bank Group <https://worldbank.org>
+ * @package     local_marketplace
+ * @copyright   2022 World Bank Group <https://worldbank.org>
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 
@@ -14,7 +14,6 @@ $action = optional_param('action', null, PARAM_ALPHANUMEXT);
 $id = optional_param('id', null, PARAM_INT);
 
 require_login();
-
 $context = context_system::instance();
 require_capability('moodle/site:config', $context);
 
@@ -30,7 +29,6 @@ if ($id) {
 $url = new moodle_url('/local/marketplace/admin/categories.php', $params);
 
 $PAGE->set_url($url);
-
 $PAGE->set_title(get_string('categories', 'local_marketplace'));
 $PAGE->set_heading(get_string('categories', 'local_marketplace'));
 $PAGE->set_context($context);
@@ -53,6 +51,13 @@ if (!$action) {
 
 $redirecturl = new moodle_url('/local/marketplace/admin/categories.php');
 
+$categoryentity = new \local_marketplace\local\entities\category();
+
+$dbcategory = null;
+if ($action == 'update' || $action == 'delete') {
+    $dbcategory = $DB->get_record('marketplace_categories', ['id' => $id], '*', MUST_EXIST);
+}
+
 if ($action == 'delete') {
     try {
         if (!confirm_sesskey()) {
@@ -61,25 +66,24 @@ if ($action == 'delete') {
 
         $id = required_param('id', PARAM_INT);
 
-        $DB->get_record('marketplace_categories', ['id' => $id], '*', MUST_EXIST);
-
-        if ($DB->count_records('marketplace_products', ['categoryid' => $id])) {
+        if ($categoryentity->has_children($id)) {
             redirect($redirecturl, get_string('deleteitem_itemwithchildren', 'error'), null, \core\output\notification::NOTIFY_WARNING);
         }
 
-        $DB->delete_records('marketplace_categories', ['id' => $id]);
+        list($success, $message) = $categoryentity->delete($id);
 
-        redirect($redirecturl, get_string('category_delete_success', 'error'), null, \core\output\notification::NOTIFY_SUCCESS);
+        if ($success) {
+            redirect($redirecturl, $message, null, \core\output\notification::NOTIFY_SUCCESS);
+        }
+
+        redirect($redirecturl, $message, null, \core\output\notification::NOTIFY_ERROR);
+
     } catch (\Exception $e) {
         redirect($redirecturl, get_string('invaliddata', 'error'), null, \core\output\notification::NOTIFY_ERROR);
     }
 }
 
-$customdata = null;
-if ($id && $action == 'update') {
-    $customdata = $DB->get_record('marketplace_categories', ['id' => $id], '*', MUST_EXIST);
-}
-$form = new \local_marketplace\forms\admin\categories($url, $customdata);
+$form = new \local_marketplace\forms\admin\categories($url, $dbcategory);
 
 if ($form->is_cancelled()) {
     redirect($redirecturl);
@@ -88,26 +92,29 @@ if ($form->is_cancelled()) {
 if ($formdata = $form->get_data()) {
     $category = new \stdClass();
     $category->name = $formdata->name;
+    $category->timemodified = time();
 
     $redirecturl = new moodle_url('/local/marketplace/admin/categories.php');
 
+    $success = false;
+    $message = '';
     if ($action == 'create') {
         $category->timecreated = time();
-        $category->timemodified = time();
 
-        $DB->insert_record('marketplace_categories', $category);
-
-        redirect($redirecturl, get_string('category_create_success', 'local_marketplace'), null, \core\output\notification::NOTIFY_SUCCESS);
+        list($success, $message) = $categoryentity->create($category);
     }
 
     if ($action == 'update') {
         $category->id = $id;
-        $category->timemodified = time();
 
-        $DB->update_record('marketplace_categories', $category);
-
-        redirect($redirecturl, get_string('category_update_success', 'local_marketplace'), null, \core\output\notification::NOTIFY_SUCCESS);
+        list($success, $message) = $categoryentity->update($category);
     }
+
+    if ($success) {
+        redirect($redirecturl, $message, null, \core\output\notification::NOTIFY_SUCCESS);
+    }
+
+    redirect($redirecturl, $message, null, \core\output\notification::NOTIFY_ERROR);
 }
 
 echo $OUTPUT->header();
@@ -115,4 +122,3 @@ echo $OUTPUT->header();
 $form->display();
 
 echo $OUTPUT->footer();
-

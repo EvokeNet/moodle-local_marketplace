@@ -7,6 +7,12 @@ defined('MOODLE_INTERNAL') || die();
 use moodle_url;
 use navigation_node;
 
+/**
+ * Admin menu utility class.
+ *
+ * @copyright   2022 World Bank Group <https://worldbank.org>
+ * @author      Willian Mano <willianmanoaraujo@gmail.com>
+ */
 class menu {
     public static function fill_secondary_menu_with_admin_items() {
         global $PAGE;

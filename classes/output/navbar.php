@@ -11,7 +11,7 @@ use renderer_base;
 /**
  * Marketplace renderable class.
  *
- * @copyright   2021 World Bank Group <https://worldbank.org>
+ * @copyright   2022 World Bank Group <https://worldbank.org>
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 class navbar implements renderable, templatable {
