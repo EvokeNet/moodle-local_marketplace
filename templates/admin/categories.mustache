@@ -1,39 +1,60 @@
-<div class="text-right">
-    <a href="{{config.wwwroot}}/local/marketplace/categories.php"></a>
+<div class="mb-4">
+    <a href="{{config.wwwroot}}/local/marketplace/admin/categories.php?action=create"
+    class="btn btn-primary">
+        {{#str}}category_create_button, local_marketplace{{/str}}
+    </a>
 </div>
 
 <table class="table table-bordered table-hover">
     <thead class="thead-dark">
     <tr>
         <th scope="col" style="width: 100px;">#</th>
-        <th scope="col">Name</th>
-        <th scope="col" style="width: 100px; text-align: center;">Actions</th>
+        <th scope="col">{{#str}}name, local_marketplace{{/str}}</th>
+        <th scope="col" style="width: 100px; text-align: center;">{{#str}}actions, local_marketplace{{/str}}</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td class="text-center">
-            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
-            <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td class="text-center">
-            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
-            <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td class="text-center">
-            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
-            <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></a>
-        </td>
-    </tr>
+    {{#categories}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td>{{name}}</td>
+            <td class="text-center">
+                <a href="{{config.wwwroot}}/local/marketplace/admin/categories.php?action=update&id={{id}}" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
+                <form action="{{config.wwwroot}}/local/marketplace/admin/categories.php?action=delete" method="POST" class="form-singlebutton">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <button class="btn-delete btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+                </form>
+            </td>
+        </tr>
+    {{/categories}}
     </tbody>
 </table>
+
+{{#js}}
+    require(['jquery', 'local_marketplace/sweetalert'], function($, Swal) {
+        $("body").on("click", ".btn-danger", function(event) {
+            event.preventDefault();
+
+            var button = $(this);
+
+            Swal.fire({
+                title: '{{#str}}deleteitem_confirm_title, local_marketplace{{/str}}',
+                text: '{{#str}}deleteitem_confirm_msg, local_marketplace{{/str}}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '{{#str}}deleteitem_confirm_yes, local_marketplace{{/str}}',
+                cancelButtonText: '{{#str}}deleteitem_confirm_no, local_marketplace{{/str}}'
+            }).then(function(result) {
+                if (result.value) {
+                    const form = button.closest("form");
+
+                    form.append('<input type="hidden" name="sesskey" value="{{config.sesskey}}">');
+
+                    form.submit();
+                }
+            });
+        });
+    });
+{{/js}}

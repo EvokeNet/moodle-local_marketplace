@@ -50,20 +50,6 @@
     color: rgba(0,0,0,.15);
 }
 
-.navbarcallbacks {
-    flex-direction: row-reverse;
-}
-
-.navbarcallbacks .marketplace {
-    display: flex;
-    align-items: center;
-    min-height: 70px;
-    margin: 0 4px;
-}
-
-.navbarcallbacks .marketplace .btn {
-    padding: 8px;
-    border-radius: 22px;
-    width: 40px;
-    height: 40px;;
+.path-local-marketplace .form-singlebutton {
+    display: initial;
 }

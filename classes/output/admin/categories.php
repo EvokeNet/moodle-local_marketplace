@@ -22,6 +22,12 @@ class categories implements renderable, templatable {
     }
 
     public function export_for_template(renderer_base $output) {
-        return [];
+        global $DB;
+
+        $categories = $DB->get_records('marketplace_categories');
+
+        return [
+            'categories' => array_values($categories)
+        ];
     }
 }
