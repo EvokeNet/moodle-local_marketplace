@@ -23,6 +23,7 @@ $string['name'] = 'Name';
 $string['description'] = 'Description';
 $string['price'] = 'Price';
 $string['stock'] = 'Stock';
+$string['unlimited'] = 'Unlimited';
 $string['category'] = 'Category';
 $string['attachment'] = 'Attachment';
 $string['images'] = 'Images';

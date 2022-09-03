@@ -30,6 +30,15 @@
                     <div class="card-body">
                         <h5 class="card-title">{{name}}</h5>
                         <p class="card-text">{{description}}</p>
+                        <span class="badge badge-secondary">{{#str}}price, local_marketplace{{/str}}: {{price}}</span>
+                        <span class="badge badge-secondary">{{#str}}stock, local_marketplace{{/str}}:
+                            {{#stock}}
+                                {{.}}
+                            {{/stock}}
+                            {{^stock}}
+                                {{#str}}unlimited, local_marketplace{{/str}}
+                            {{/stock}}
+                        </span>
                     </div>
                     <div class="card-footer">
                         <a href="{{config.wwwroot}}/local/marketplace/admin/products.php?action=update&id={{id}}" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
