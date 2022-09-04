@@ -77,4 +77,10 @@ abstract class base {
 
         return array_values($records);
     }
+
+    public function count() {
+        global $DB;
+
+        return $DB->count_records($this->table);
+    }
 }

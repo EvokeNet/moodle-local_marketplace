@@ -4,6 +4,9 @@ namespace local_marketplace\output\admin;
 
 defined('MOODLE_INTERNAL') || die();
 
+use local_marketplace\local\entities\category;
+use local_marketplace\local\entities\order;
+use local_marketplace\local\entities\product;
 use renderable;
 use templatable;
 use renderer_base;
@@ -22,6 +25,14 @@ class index implements renderable, templatable {
     }
 
     public function export_for_template(renderer_base $output) {
-        return [];
+        $productentity = new product();
+        $orderentity = new order();
+        $categoryentity = new category();
+
+        return [
+            'total_products' => $productentity->count(),
+            'total_orders' => $orderentity->count(),
+            'total_categories' => $categoryentity->count()
+        ];
     }
 }
