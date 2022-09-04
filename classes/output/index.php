@@ -16,9 +16,11 @@ use renderer_base;
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 class index implements renderable, templatable {
+    protected $courseid;
     protected $context;
 
-    public function __construct($context) {
+    public function __construct($courseid, $context) {
+        $this->courseid = $courseid;
         $this->context = $context;
     }
 
@@ -26,6 +28,7 @@ class index implements renderable, templatable {
         $productentity = new product();
 
         return [
+            'courseid' => $this->courseid,
             'products' => $productentity->get_all()
         ];
     }

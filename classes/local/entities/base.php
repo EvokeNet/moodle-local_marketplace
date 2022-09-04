@@ -60,7 +60,7 @@ abstract class base {
         }
     }
 
-    public function find($id, $fields = '*', $strictness = IGNORE_MISSING) {
+    public function find($id, $fields = '*', $strictness = MUST_EXIST) {
         global $DB;
 
         return $DB->get_record($this->table, ['id' => $id], $fields, $strictness);

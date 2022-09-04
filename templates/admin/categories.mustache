@@ -44,8 +44,8 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: '{{#str}}deleteitem_confirm_yes, local_marketplace{{/str}}',
-                cancelButtonText: '{{#str}}deleteitem_confirm_no, local_marketplace{{/str}}'
+                confirmButtonText: '{{#str}}confirm_yes, local_marketplace{{/str}}',
+                cancelButtonText: '{{#str}}confirm_no, local_marketplace{{/str}}'
             }).then(function(result) {
                 if (result.value) {
                     const form = button.closest("form");

@@ -94,7 +94,7 @@ class products extends \moodleform {
         if (isset($this->_customdata->id)) {
             $productentity = new product();
 
-            $product = $productentity->find($this->_customdata->id, '*', MUST_EXIST);
+            $product = $productentity->find($this->_customdata->id);
 
             $context = \context_system::instance();
 

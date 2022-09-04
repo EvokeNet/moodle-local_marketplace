@@ -25,7 +25,7 @@ echo $OUTPUT->header();
 
 $renderer = $PAGE->get_renderer('local_marketplace');
 
-$contentrenderable = new \local_marketplace\output\index($context);
+$contentrenderable = new \local_marketplace\output\index($id, $context);
 
 echo $renderer->render($contentrenderable);
 

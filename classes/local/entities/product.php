@@ -2,6 +2,10 @@
 
 namespace local_marketplace\local\entities;
 
+use local_marketplace\local\exceptions\product_outofstock;
+use local_marketplace\util\evocoin;
+use moodle_url;
+
 /**
  * Product entity class.
  *
@@ -131,9 +135,14 @@ class product extends base {
 
         foreach ($records as $record) {
             $record->images = $this->get_images($record->id);
+            $record->instock = $this->instock($record);
         }
 
         return $records;
+    }
+
+    public function instock($product) {
+        return $product->stock === null || $product->stock > 0;
     }
 
     protected function get_images($id) {
