@@ -68,3 +68,6 @@ $string['errorbuy'] = 'Something went wrong while trying to finish your purchase
 // Exceptions strings.
 $string['outofstock'] = 'Out of stock';
 $string['product_outofstock'] = 'This product is out of stock!';
+
+$string['mypurchases'] = 'My purchased products';
+$string['downloadyourfile'] = 'Download your file';

@@ -157,7 +157,7 @@ class product extends base {
         return $DB->update_record($this->table, $product);
     }
 
-    protected function get_images($id) {
+    public function get_images($id) {
         $context = \context_system::instance();
 
         $fs = get_file_storage();
@@ -196,5 +196,36 @@ class product extends base {
         $images[0]['active'] = true;
 
         return $images;
+    }
+
+    public function get_downloadable_file_url($id) {
+        $context = \context_system::instance();
+
+        $fs = get_file_storage();
+
+        $files = $fs->get_area_files($context->id,
+            'local_marketplace',
+            'attachment',
+            $id,
+            'timemodified',
+            false);
+
+        if (!$files) {
+            return false;
+        }
+
+        foreach ($files as $file) {
+            $path = [
+                '',
+                $file->get_contextid(),
+                $file->get_component(),
+                $file->get_filearea(),
+                $id . $file->get_filepath() . $file->get_filename()
+            ];
+
+            return \moodle_url::make_file_url('/pluginfile.php', implode('/', $path), true);
+        }
+
+        return false;
     }
 }
