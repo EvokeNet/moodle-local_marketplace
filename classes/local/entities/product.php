@@ -145,6 +145,18 @@ class product extends base {
         return $product->stock === null || $product->stock > 0;
     }
 
+    public function decrease_stock($product, $quantity) {
+        global $DB;
+
+        if ($product->stock == null) {
+            return true;
+        }
+
+        $product->stock -= $quantity;
+
+        return $DB->update_record($this->table, $product);
+    }
+
     protected function get_images($id) {
         $context = \context_system::instance();
 

@@ -51,6 +51,8 @@ class seller {
 
             $orderid = $DB->insert_record('marketplace_orders', $order);
 
+            $productentity->decrease_stock($product, 1);
+
             $evctransaction = new \stdClass();
             $evctransaction->courseid = $courseid;
             $evctransaction->userid = $userid;
