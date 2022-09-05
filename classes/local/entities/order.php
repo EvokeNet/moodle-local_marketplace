@@ -33,4 +33,25 @@ class order extends base {
 
         return array_values($records);
     }
+
+    public function get_orders_with_users_data() {
+        global $DB;
+
+        $sql = 'SELECT
+                    o.id, o.timecreated,
+                    p.id as productid, p.name, p.description, p.price, p.type,
+                    u.id as userid, u.email, u.firstnamephonetic, u.lastnamephonetic, u.middlename, u.alternatename, u.firstname, u.lastname
+                FROM {marketplace_orders} o
+                INNER JOIN {marketplace_products} p ON o.productid = p.id
+                INNER JOIN {user} u ON u.id = o.userid
+                ORDER BY o.id DESC';
+
+        $records = $DB->get_records_sql($sql);
+
+        if (!$records) {
+            return false;
+        }
+
+        return array_values($records);
+    }
 }

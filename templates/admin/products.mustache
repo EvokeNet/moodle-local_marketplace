@@ -43,6 +43,7 @@
                         {{^instock}}
                             <span class="badge badge-warning">{{#str}}outofstock, local_marketplace{{/str}}</span>
                         {{/instock}}
+                    </div>
                     <div class="card-footer">
                         <a href="{{config.wwwroot}}/local/marketplace/admin/products.php?action=update&id={{id}}" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
                         <form action="{{config.wwwroot}}/local/marketplace/admin/products.php?action=delete" method="POST" class="form-singlebutton">

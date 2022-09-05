@@ -39,4 +39,10 @@ class renderer extends plugin_renderer_base {
 
         return parent::render_from_template('local_marketplace/admin/products', $data);
     }
+
+    public function render_orders(renderable $page) {
+        $data = $page->export_for_template($this);
+
+        return parent::render_from_template('local_marketplace/admin/orders', $data);
+    }
 }
