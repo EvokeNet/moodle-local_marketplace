@@ -92,6 +92,7 @@ if ($form->is_cancelled()) {
 if ($formdata = $form->get_data()) {
     $product = new \stdClass();
     $product->categoryid = $formdata->categoryid;
+    $product->courseid = $formdata->courseid ?: null;
     $product->name = $formdata->name;
     $product->description = $formdata->description;
     $product->price = $formdata->price;

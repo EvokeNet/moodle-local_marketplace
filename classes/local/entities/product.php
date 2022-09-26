@@ -141,6 +141,31 @@ class product extends base {
         return $records;
     }
 
+    public function get_all_course_products($courseid) {
+        global $DB;
+
+        $sql = 'SELECT * FROM {'.$this->table.'}
+                WHERE courseid is null OR courseid = :courseid
+                ORDER BY id DESC';
+
+        $records = $DB->get_records_sql($sql, ['courseid' => $courseid]);
+
+        if (!$records) {
+            return [];
+        }
+
+        if (!$records) {
+            return [];
+        }
+
+        foreach ($records as $record) {
+            $record->images = $this->get_images($record->id);
+            $record->instock = $this->instock($record);
+        }
+
+        return array_values($records);
+    }
+
     public function instock($product) {
         return $product->stock === null || $product->stock > 0;
     }

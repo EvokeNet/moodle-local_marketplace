@@ -25,6 +25,7 @@ $string['price'] = 'Price';
 $string['stock'] = 'Stock';
 $string['unlimited'] = 'Unlimited';
 $string['category'] = 'Category';
+$string['course'] = 'Course';
 $string['attachment'] = 'Attachment';
 $string['images'] = 'Images';
 $string['actions'] = 'Actions';

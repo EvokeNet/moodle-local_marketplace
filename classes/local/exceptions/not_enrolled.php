@@ -6,13 +6,13 @@ use moodle_url;
 use moodle_exception;
 
 /**
- * Product out of stock exception class.
+ * Not enrolled exception class.
  *
  * @package     local_marketplace
  * @copyright   2022 World Bank Group <https://worldbank.org>
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
-class product_outofstock extends moodle_exception {
+class not_enrolled extends moodle_exception {
     public function __construct($errorcode, $courseid) {
         $url = new moodle_url('/local/marketplace/index.php', ['id' => $courseid]);
 

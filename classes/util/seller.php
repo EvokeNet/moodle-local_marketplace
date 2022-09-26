@@ -4,6 +4,7 @@ namespace local_marketplace\util;
 
 defined('MOODLE_INTERNAL') || die();
 
+use local_marketplace\local\exceptions\not_enrolled;
 use moodle_url;
 use local_marketplace\local\entities\product;
 use local_marketplace\local\exceptions\product_outofstock;
@@ -28,6 +29,14 @@ class seller {
 
         if (!$productentity->instock($product)) {
             throw new product_outofstock('product_outofstock', $courseid);
+        }
+
+        if ($product->courseid) {
+            $context = \context_course::instance($courseid);
+
+            if (!is_enrolled($context, $userid)) {
+                throw new not_enrolled('you_are_not_enrolled_on_course', $courseid);
+            }
         }
 
         $url = new moodle_url('/local/marketplace/index.php', ['id' => $courseid]);

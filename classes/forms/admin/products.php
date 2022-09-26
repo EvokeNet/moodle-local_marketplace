@@ -4,6 +4,7 @@ namespace local_marketplace\forms\admin;
 
 use local_marketplace\local\entities\category;
 use local_marketplace\local\entities\product;
+use local_marketplace\util\course;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -28,13 +29,20 @@ class products extends \moodleform {
 
         $categoryentity = new category();
         $productentity = new product();
+        $courseutil = new course();
 
         $mform->addElement('select', 'categoryid', get_string('category', 'local_marketplace'), $categoryentity->get_all_select());
         $mform->addRule('categoryid', get_string('required'), 'required', null, 'client');
         $mform->addRule('categoryid', get_string('required'), 'nonzero', null, 'client');
-        $mform->setType('categoryid', PARAM_TEXT);
+        $mform->setType('categoryid', PARAM_INT);
         if (isset($this->_customdata->categoryid)) {
             $mform->setDefault('categoryid', $this->_customdata->categoryid);
+        }
+
+        $mform->addElement('select', 'courseid', get_string('course', 'local_marketplace'), $courseutil->get_all_select());
+        $mform->setType('courseid', PARAM_INT);
+        if (isset($this->_customdata->courseid)) {
+            $mform->setDefault('courseid', $this->_customdata->courseid);
         }
 
         $mform->addElement('text', 'name', get_string('name', 'local_marketplace'));
