@@ -127,7 +127,14 @@ class product extends base {
     }
 
     public function get_all() {
-        $records = parent::get_all();
+        global $DB;
+
+        $sql = 'SELECT p.*, c.shortname as coursename
+                FROM {marketplace_products} p
+                LEFT JOIN {course} c ON c.id = p.courseid
+                ORDER BY p.id DESC';
+
+        $records = $DB->get_records_sql($sql);
 
         if (!$records) {
             return [];
@@ -138,21 +145,19 @@ class product extends base {
             $record->instock = $this->instock($record);
         }
 
-        return $records;
+        return array_values($records);
     }
 
     public function get_all_course_products($courseid) {
         global $DB;
 
-        $sql = 'SELECT * FROM {'.$this->table.'}
+        $sql = 'SELECT p.*, c.shortname as coursename
+                FROM {marketplace_products} p
+                LEFT JOIN {course} c ON c.id = p.courseid
                 WHERE courseid is null OR courseid = :courseid
-                ORDER BY id DESC';
+                ORDER BY p.id DESC';
 
         $records = $DB->get_records_sql($sql, ['courseid' => $courseid]);
-
-        if (!$records) {
-            return [];
-        }
 
         if (!$records) {
             return [];

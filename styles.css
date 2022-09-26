@@ -59,6 +59,19 @@
     width: 100%;
 }
 
+.path-local-marketplace .ribbon {
+    position: absolute;
+    top: 10px;
+    color: #fff;
+    background-color: #ff0540;
+    padding: .5em 0.75em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
 .path-local-marketplace .carousel .carousel-inner img {
     border-top-left-radius: calc(0.5rem - 1px);
     border-top-right-radius: calc(0.5rem - 1px);

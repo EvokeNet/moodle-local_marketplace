@@ -43,6 +43,11 @@
                         {{^instock}}
                             <span class="badge badge-warning">{{#str}}outofstock, local_marketplace{{/str}}</span>
                         {{/instock}}
+                        {{#coursename}}
+                            <div class="d-block">
+                                <span class="badge badge-primary">{{#str}}course, local_marketplace{{/str}}: {{coursename}}</span>
+                            </div>
+                        {{/coursename}}
                     </div>
                     <div class="card-footer">
                         <a href="{{config.wwwroot}}/local/marketplace/admin/products.php?action=update&id={{id}}" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
