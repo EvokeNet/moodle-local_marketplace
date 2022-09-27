@@ -8,6 +8,9 @@
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 
+use local_marketplace\local\entities\order;
+use local_marketplace\local\exceptions\product_not_purchased;
+
 defined('MOODLE_INTERNAL') || die();
 
 /**
@@ -34,6 +37,14 @@ function local_marketplace_pluginfile($course, $cm, $context, $filearea, $args, 
     $itemid = (int)array_shift($args);
     if ($itemid == 0) {
         return false;
+    }
+
+    if ($filearea == 'attachment') {
+        $orderentity = new order();
+
+        if (!$orderentity->user_purchased_product($itemid)) {
+            throw new product_not_purchased('You have not purchased this product');
+        }
     }
 
     $relativepath = implode('/', $args);

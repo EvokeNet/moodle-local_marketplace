@@ -2,6 +2,7 @@
 
 namespace local_marketplace\local\entities;
 
+use local_marketplace\local\exceptions\product_not_purchased;
 use local_marketplace\local\exceptions\product_outofstock;
 use local_marketplace\util\evocoin;
 use moodle_url;
@@ -228,7 +229,7 @@ class product extends base {
         return $images;
     }
 
-    public function get_downloadable_file_url($id) {
+    public function get_downloadable_file_url($productid) {
         $context = \context_system::instance();
 
         $fs = get_file_storage();
@@ -236,7 +237,7 @@ class product extends base {
         $files = $fs->get_area_files($context->id,
             'local_marketplace',
             'attachment',
-            $id,
+            $productid,
             'timemodified',
             false);
 
@@ -250,7 +251,7 @@ class product extends base {
                 $file->get_contextid(),
                 $file->get_component(),
                 $file->get_filearea(),
-                $id . $file->get_filepath() . $file->get_filename()
+                $productid . $file->get_filepath() . $file->get_filename()
             ];
 
             return \moodle_url::make_file_url('/pluginfile.php', implode('/', $path), true);

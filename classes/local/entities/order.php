@@ -54,4 +54,16 @@ class order extends base {
 
         return array_values($records);
     }
+
+    public function user_purchased_product($productid) {
+        global $USER, $DB;
+
+        $productorder = $DB->get_record($this->table, ['productid' => $productid, 'userid' => $USER->id]);
+
+        if ($productorder) {
+            return true;
+        }
+
+        return false;
+    }
 }
