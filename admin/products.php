@@ -90,6 +90,11 @@ if ($form->is_cancelled()) {
 }
 
 if ($formdata = $form->get_data()) {
+    $stock = null;
+    if ($formdata->stock == 0 || $formdata->stock != '') {
+        $stock = (int) $formdata->stock;
+    }
+
     $product = new \stdClass();
     $product->categoryid = $formdata->categoryid;
     $product->courseid = $formdata->courseid ?: null;
@@ -97,7 +102,7 @@ if ($formdata = $form->get_data()) {
     $product->description = $formdata->description;
     $product->price = $formdata->price;
     $product->type = $formdata->type;
-    $product->stock = $formdata->stock ?: null;
+    $product->stock = $stock;
     $product->timemodified = time();
 
     $redirecturl = new moodle_url('/local/marketplace/admin/products.php');

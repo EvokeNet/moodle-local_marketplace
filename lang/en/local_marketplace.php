@@ -62,6 +62,7 @@ $string['buy_success'] = 'Congratulations! You just purchased an awesome item!';
 $string['something_went_wrong'] = 'Something went wrong';
 $string['onlynumbers'] = 'Only numbers are accepted here';
 $string['onlyintegers'] = 'Only integer numbers are accepted here';
+$string['nonnegativevalues'] = 'You can not set negative values';
 
 $string['nocoinstobuy'] = 'Sorry. You don\'t have enough EVOCoins to buy this item.';
 $string['errorbuy'] = 'Something went wrong while trying to finish your purchase. Please, try again.';

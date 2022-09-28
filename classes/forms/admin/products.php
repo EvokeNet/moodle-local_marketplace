@@ -68,6 +68,7 @@ class products extends \moodleform {
         $mform->addRule('price', get_string('required'), 'required', null, 'client');
         $mform->addRule('price', get_string('onlynumbers', 'local_marketplace'), 'numeric', null, 'client');
         $mform->addRule('price', get_string('onlyintegers', 'local_marketplace'), 'nopunctuation', null, 'client');
+        $mform->addRule('price', get_string('required'), 'nonzero', null, 'client');
         $mform->setType('price', PARAM_INT);
         if (isset($this->_customdata->price)) {
             $mform->setDefault('price', $this->_customdata->price);
@@ -88,7 +89,7 @@ class products extends \moodleform {
         $mform->addElement('text', 'stock', get_string('stock', 'local_marketplace'));
         $mform->addRule('stock', get_string('onlynumbers', 'local_marketplace'), 'numeric', null, 'client');
         $mform->addRule('stock', get_string('onlyintegers', 'local_marketplace'), 'nopunctuation', null, 'client');
-        $mform->setType('stock', PARAM_INT);
+        $mform->setType('stock', PARAM_TEXT);
         if (isset($this->_customdata->stock)) {
             $mform->setDefault('stock', $this->_customdata->stock);
         }
@@ -116,5 +117,32 @@ class products extends \moodleform {
                 $mform->getElement('attachment')->setValue($draftitemid);
             }
         }
+    }
+
+    /**
+     * A bit of custom validation for this form
+     *
+     * @param array $data An assoc array of field=>value
+     * @param array $files An array of files
+     *
+     * @return array
+     *
+     * @throws \coding_exception
+     * @throws \dml_exception
+     */
+    public function validation($data, $files) {
+        $errors = parent::validation($data, $files);
+
+        $stock = isset($data['stock']) ? $data['stock'] : null;
+
+        if ($this->is_submitted() && $data['price'] < 0) {
+            $errors['price'] = get_string('nonnegativevalue', 'local_marketplace');
+        }
+
+        if ($this->is_submitted() && $stock != '' && $stock < 0) {
+            $errors['stock'] = get_string('nonnegativevalue', 'local_marketplace');
+        }
+
+        return $errors;
     }
 }
