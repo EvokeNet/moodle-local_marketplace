@@ -8,24 +8,27 @@
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 
-require(__DIR__.'/../../../config.php');
+require(__DIR__.'/../../config.php');
 
-require_login();
-$context = context_system::instance();
-require_capability('moodle/site:config', $context);
+$id = required_param('id', PARAM_INT);
+$course = $DB->get_record('course', ['id' => $id], '*', MUST_EXIST);
 
-$PAGE->set_url('/local/marketplace/admin/orders.php');
+$context = context_course::instance($id);
+
+require_course_login($id);
+
+require_capability('moodle/course:update', $context);
+
+$PAGE->set_url('/local/marketplace/courseorders.php');
 $PAGE->set_title(get_string('pluginname', 'local_marketplace'));
 $PAGE->set_heading(get_string('pluginname', 'local_marketplace'));
 $PAGE->set_context($context);
-
-\local_marketplace\util\menu::fill_secondary_menu_with_admin_items();
 
 echo $OUTPUT->header();
 
 $renderer = $PAGE->get_renderer('local_marketplace', 'admin');
 
-$contentrenderable = new \local_marketplace\output\admin\orders($context);
+$contentrenderable = new \local_marketplace\output\courseorders($context, $course);
 
 echo $renderer->render($contentrenderable);
 

@@ -58,3 +58,18 @@ function local_marketplace_pluginfile($course, $cm, $context, $filearea, $args, 
 
     send_stored_file($file, 0, 0, $forcedownload, $options);
 }
+
+function local_marketplace_extend_navigation_course($navigation, $course, $context) {
+    if (has_capability('moodle/course:update', $context)) {
+        $url = new moodle_url('/local/marketplace/courseorders.php', ['id' => $course->id]);
+
+        $navigation->add(
+            get_string('marketplaceorders', 'local_marketplace'),
+            $url,
+            navigation_node::TYPE_CUSTOM,
+            null,
+            'evokemarketplaceorders',
+            new pix_icon('i/course', '')
+        );
+    }
+}

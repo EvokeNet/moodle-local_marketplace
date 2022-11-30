@@ -30,7 +30,9 @@ $string['attachment'] = 'Attachment';
 $string['images'] = 'Images';
 $string['actions'] = 'Actions';
 
+$string['marketplaceorders'] = 'Evoke Marketplace orders';
 $string['orders'] = 'Orders';
+$string['courseorders'] = 'Course orders';
 
 $string['categories'] = 'Categories';
 $string['category_create_button'] = 'Add a new category';

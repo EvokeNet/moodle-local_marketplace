@@ -34,7 +34,7 @@ class order extends base {
         return array_values($records);
     }
 
-    public function get_orders_with_users_data() {
+    public function get_orders_with_users_data($courseid = null) {
         global $DB;
 
         $sql = 'SELECT
@@ -43,10 +43,18 @@ class order extends base {
                     u.id as userid, u.email, u.firstnamephonetic, u.lastnamephonetic, u.middlename, u.alternatename, u.firstname, u.lastname
                 FROM {marketplace_orders} o
                 INNER JOIN {marketplace_products} p ON o.productid = p.id
-                INNER JOIN {user} u ON u.id = o.userid
-                ORDER BY o.id DESC';
+                INNER JOIN {user} u ON u.id = o.userid';
 
-        $records = $DB->get_records_sql($sql);
+        $params = [];
+
+        if ($courseid) {
+            $sql .= ' WHERE p.courseid = :courseid ';
+            $params['courseid'] = $courseid;
+        }
+
+        $sql .= ' ORDER BY o.id DESC';
+
+        $records = $DB->get_records_sql($sql, $params);
 
         if (!$records) {
             return false;

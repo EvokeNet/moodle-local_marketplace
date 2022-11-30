@@ -1,0 +1,44 @@
+<h3 class="mb-4">{{#str}}courseorders, local_marketplace{{/str}}</h3>
+
+<div class="my-2">
+    <div class="list-group">
+        {{#orders}}
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="user d-flex">
+                    <div class="picture">
+                        <img class="userpicture mr-2" src="{{userimage}}" alt="{{fullname}}" width="60px">
+                    </div>
+                    <div class="info d-flex align-items-center">
+                        <div class="content">
+                            <h4 class="mb-0">{{fullname}}</h4>
+                            <small>{{email}}</small>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-3">
+
+                <div class="d-flex">
+                    <div class="mr-3">
+                        <img class="border border-radius p-1" src="{{image.fileurl}}" style="width: 140px;">
+                    </div>
+                    <div class="content">
+                        <h5 class="mb-0">{{name}}</h5>
+                        <small>{{humantimecreated}}</small>
+
+                        <p class="mt-2 mb-0">{{description}}</p>
+                        <span class="badge badge-warning">{{#str}}price, local_marketplace{{/str}}: {{price}}</span>
+
+                        {{#downloadurl}}
+                            <div class="mt-2">
+                                <a href="{{downloadurl}}" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-download"></i> {{#str}}downloadyourfile, local_marketplace{{/str}}
+                                </a>
+                            </div>
+                        {{/downloadurl}}
+                    </div>
+                </div>
+            </div>
+        {{/orders}}
+    </div>
+</div>
