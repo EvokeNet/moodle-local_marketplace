@@ -10,69 +10,69 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Evoke Marketplace';
-$string['previous'] = 'Previous';
-$string['next'] = 'Next';
+$string['pluginname'] = 'Evoke Marketplace (Tienda)';
+$string['previous'] = 'Anterior';
+$string['next'] = 'Próximo';
 
-$string['marketplace'] = 'Marketplace';
-$string['home'] = 'Home';
+$string['marketplace'] = 'Tienda';
+$string['home'] = 'Inicio';
 
 // Form elements.
-$string['selectanoption'] = 'Select an option';
-$string['name'] = 'Name';
-$string['description'] = 'Description';
-$string['price'] = 'Price';
+$string['selectanoption'] = 'Selecciona una opción';
+$string['name'] = 'Nombre';
+$string['description'] = 'Descripción';
+$string['price'] = 'Precio';
 $string['stock'] = 'Stock';
-$string['unlimited'] = 'Unlimited';
-$string['category'] = 'Category';
-$string['course'] = 'Course';
-$string['attachment'] = 'Attachment';
-$string['images'] = 'Images';
-$string['actions'] = 'Actions';
+$string['unlimited'] = 'Sin límite';
+$string['category'] = 'Categoría';
+$string['course'] = 'Curso';
+$string['attachment'] = 'Adjunto';
+$string['images'] = 'Imágenes';
+$string['actions'] = 'Acciones';
 
-$string['marketplaceorders'] = 'Evoke Marketplace orders';
-$string['orders'] = 'Orders';
-$string['courseorders'] = 'Course orders';
+$string['marketplaceorders'] = 'Traer pedidos de la Tienda';
+$string['orders'] = 'Pedidos';
+$string['courseorders'] = 'Pedidos de curso';
 
-$string['categories'] = 'Categories';
-$string['category_create_button'] = 'Add a new category';
+$string['categories'] = 'Categorías';
+$string['category_create_button'] = 'Agregar una nueva categoría';
 
-$string['products'] = 'Products';
-$string['product_create_button'] = 'Add a new product';
-$string['product_type'] = 'Type';
+$string['products'] = 'Productos';
+$string['product_create_button'] = 'Agregar un nuevo producto';
+$string['product_type'] = 'Tipo';
 $string['type_digital'] = 'Digital';
-$string['type_digital_file'] = 'Digital downloadable file';
-$string['type_physical'] = 'Physical';
+$string['type_digital_file'] = 'Archivo digital descargable';
+$string['type_physical'] = 'Físico';
 
-$string['confirm_yes'] = 'Yes, I wanna it!';
-$string['confirm_no'] = 'Cancel';
+$string['confirm_yes'] = '¡Sí, lo quiero!';
+$string['confirm_no'] = 'Cancelar';
 
-$string['createitem_success'] = 'Item successfuly created';
-$string['updateitem_success'] = 'Item successfuly updated';
-$string['deleteitem_success'] = 'Item successfuly deleted';
+$string['createitem_success'] = 'Elemento exitosamente creado';
+$string['updateitem_success'] = 'Elemento exitosamente actualizado';
+$string['deleteitem_success'] = 'Elemento exitosamente borrado';
 
-$string['deleteitem_confirm_title'] = 'Are you sure?';
-$string['deleteitem_confirm_msg'] = 'Once deleted, this item cannot be recovered!';
-$string['deleteitem_itemwithchildren'] = 'You can not delete this item because it has some children items.';
+$string['deleteitem_confirm_title'] = '¿Estás seguro?';
+$string['deleteitem_confirm_msg'] = '¡Una vez borrado, este elemento no podrá ser recuperado!';
+$string['deleteitem_itemwithchildren'] = 'No puedes borrar este elemento porque contiene elementos infantiles.';
 
-$string['buy'] = 'Buy';
-$string['buy_confirm_title'] = 'Confirm your purchase?';
-$string['buy_confirm_msg'] = 'Are you sure you want to buy this amazing item?';
-$string['buy_success'] = 'Congratulations! You just purchased an awesome item!';
+$string['buy'] = 'Comprar';
+$string['buy_confirm_title'] = 'Confirma tu compra';
+$string['buy_confirm_msg'] = '¿Estás seguro que quieres comprar este elemento?';
+$string['buy_success'] = '¡Felicitaciones! ¡El elemento fue adquirido!';
 
 // Errors and validation message.
-$string['something_went_wrong'] = 'Something went wrong';
-$string['onlynumbers'] = 'Only numbers are accepted here';
-$string['onlyintegers'] = 'Only integer numbers are accepted here';
-$string['nonnegativevalues'] = 'You can not set negative values';
+$string['something_went_wrong'] = 'Algo salió mal';
+$string['onlynumbers'] = 'Sólo se permiten números';
+$string['onlyintegers'] = 'Sólo se permiten números enteros';
+$string['nonnegativevalues'] = 'No puedes poner números negativos';
 
-$string['nocoinstobuy'] = 'Sorry. You don\'t have enough EVOCoins to buy this item.';
-$string['errorbuy'] = 'Something went wrong while trying to finish your purchase. Please, try again.';
+$string['nocoinstobuy'] = 'Lo lamentamos. No tienes suficientes Evocoins para comprar este elemento.';
+$string['errorbuy'] = 'Algo salió mal mientras se estaba finalizando tu compra. Por favor, vuelve a intentarlo.';
 
 // Exceptions strings.
-$string['outofstock'] = 'Out of stock';
-$string['product_outofstock'] = 'This product is out of stock!';
-$string['exclusivecourseproduct'] = 'Exclusive Course Product';
+$string['outofstock'] = 'Sin stock';
+$string['product_outofstock'] = 'Lo lamentamos. Este producto no tiene stock.';
+$string['exclusivecourseproduct'] = 'Producto de curso exclusivo';
 
-$string['mypurchases'] = 'My purchased products';
-$string['downloadyourfile'] = 'Download your file';
+$string['mypurchases'] = 'Mis compras';
+$string['downloadyourfile'] = 'Descarga tu archivo';
