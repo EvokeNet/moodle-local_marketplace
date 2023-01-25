@@ -57,8 +57,8 @@ $string['deleteitem_itemwithchildren'] = 'You cannot delete this item because it
 
 $string['buy'] = 'Buy';
 $string['buy_confirm_title'] = 'Confirm your purchase';
-$string['buy_confirm_msg'] = 'Are you sure you want to buy this  item?';
-$string['buy_success'] = 'Congratulations! The item was purchased!';
+$string['buy_confirm_msg'] = 'Are you sure you want to buy this item?';
+$string['buy_success'] = 'Congratulations! The item was purchased.';
 
 // Errors and validation message.
 $string['something_went_wrong'] = 'Something went wrong';
@@ -66,7 +66,7 @@ $string['onlynumbers'] = 'Only numbers are allowed';
 $string['onlyintegers'] = 'Only integer numbers are allowed';
 $string['nonnegativevalues'] = 'You can not set negative values';
 
-$string['nocoinstobuy'] = 'Sorry. You do not have enough Evocoins to buy this item.';
+$string['nocoinstobuy'] = 'Sorry. You do not have enough EVCs to buy this item.';
 $string['errorbuy'] = 'Something went wrong while trying to finish your purchase. Please try again.';
 
 // Exceptions strings.
