@@ -19,6 +19,10 @@ $context = context_course::instance($courseid);
 
 $PAGE->set_context($context);
 
-$seller = new \local_marketplace\util\seller();
+try {
+    $seller = new \local_marketplace\util\seller();
 
-$seller->sell($productid, $courseid);
+    $seller->sell($productid, $courseid);
+} catch (\local_marketplace\local\exceptions\order_limitperuser $e) {
+    redirect($e->link, \core\notification::warning($e->getMessage()));
+}

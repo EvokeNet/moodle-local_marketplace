@@ -87,11 +87,20 @@ class products extends \moodleform {
         $mform->hideIf('attachment', 'type', 'neq', '2');
 
         $mform->addElement('text', 'stock', get_string('stock', 'local_marketplace'));
+        $mform->setType('stock', PARAM_TEXT);
         $mform->addRule('stock', get_string('onlynumbers', 'local_marketplace'), 'numeric', null, 'client');
         $mform->addRule('stock', get_string('onlyintegers', 'local_marketplace'), 'nopunctuation', null, 'client');
-        $mform->setType('stock', PARAM_TEXT);
         if (isset($this->_customdata->stock)) {
             $mform->setDefault('stock', $this->_customdata->stock);
+        }
+
+        $mform->addElement('text', 'limitperuser', get_string('limitperuser', 'local_marketplace'));
+        $mform->addHelpButton('limitperuser', 'limitperuser', 'local_marketplace');
+        $mform->setType('limitperuser', PARAM_TEXT);
+        $mform->addRule('limitperuser', get_string('onlynumbers', 'local_marketplace'), 'numeric', null, 'client');
+        $mform->addRule('limitperuser', get_string('onlyintegers', 'local_marketplace'), 'nopunctuation', null, 'client');
+        if (isset($this->_customdata->limitperuser)) {
+            $mform->setDefault('limitperuser', $this->_customdata->limitperuser);
         }
 
         $this->add_action_buttons(true);

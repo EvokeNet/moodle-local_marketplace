@@ -23,6 +23,8 @@ $string['name'] = 'Nombre';
 $string['description'] = 'Descripción';
 $string['price'] = 'Precio';
 $string['stock'] = 'Stock';
+$string['limitperuser_help'] = 'Este campo define cuántas veces un usuario puede comprar este producto. Déjelo en blanco para ilimitado.';
+$string['limitperuser'] = 'Límite por usuario';
 $string['unlimited'] = 'Sin límite';
 $string['category'] = 'Categoría';
 $string['course'] = 'Curso';
@@ -73,6 +75,7 @@ $string['errorbuy'] = 'Algo salió mal mientras se estaba finalizando tu compra.
 $string['outofstock'] = 'Sin stock';
 $string['product_outofstock'] = 'Lo lamentamos. Este producto no tiene stock.';
 $string['exclusivecourseproduct'] = 'Producto de curso exclusivo';
+$string['order_limitperuser'] = 'Alcanzaste el límite de compras para este producto';
 
 $string['mypurchases'] = 'Mis compras';
 $string['downloadyourfile'] = 'Descarga tu archivo';

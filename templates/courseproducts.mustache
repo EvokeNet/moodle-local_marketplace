@@ -1,0 +1,92 @@
+<div class="mb-4 text-right">
+    <a href="{{config.wwwroot}}/local/marketplace/admin/products.php?action=create"
+       class="btn btn-primary">
+        {{#str}}product_create_button, local_marketplace{{/str}}
+    </a>
+</div>
+
+<div class="my-2">
+    <div class="row">
+        {{#products}}
+            <div class="col-md-4">
+                <div class="card shadow-none border my-2">
+                    <div id="images-{{id}}" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {{#images}}
+                                <div class="carousel-item {{#active}}active{{/active}}">
+                                    <img class="d-block w-100" src="{{fileurl}}">
+                                </div>
+                            {{/images}}
+                        </div>
+                        <a class="carousel-control-prev" href="#images-{{id}}" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">{{#str}}previous, local_marketplace{{/str}}</span>
+                        </a>
+                        <a class="carousel-control-next" href="#images-{{id}}" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">{{#str}}next, local_marketplace{{/str}}</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{name}}</h5>
+                        <p class="card-text">{{description}}</p>
+                        {{#instock}}
+                            <span class="badge badge-secondary">{{#str}}stock, local_marketplace{{/str}}:
+                                {{#stock}}
+                                    {{.}}
+                                {{/stock}}
+                                {{^stock}}
+                                    {{#str}}unlimited, local_marketplace{{/str}}
+                                {{/stock}}
+                            </span>
+                        {{/instock}}
+                        {{^instock}}
+                            <span class="badge badge-warning">{{#str}}outofstock, local_marketplace{{/str}}</span>
+                        {{/instock}}
+                        {{#coursename}}
+                            <div class="d-block">
+                                <span class="badge badge-primary">{{#str}}course, local_marketplace{{/str}}: {{coursename}}</span>
+                            </div>
+                        {{/coursename}}
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{config.wwwroot}}/local/marketplace/admin/products.php?action=update&id={{id}}" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
+                        <form action="{{config.wwwroot}}/local/marketplace/admin/products.php?action=delete" method="POST" class="form-singlebutton">
+                            <input type="hidden" name="id" value="{{id}}">
+                            <button class="btn-delete btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {{/products}}
+    </div>
+</div>
+
+{{#js}}
+    require(['jquery', 'local_marketplace/sweetalert'], function($, Swal) {
+        $("body").on("click", ".btn-danger", function(event) {
+            event.preventDefault();
+
+            var button = $(this);
+
+            Swal.fire({
+                title: '{{#str}}deleteitem_confirm_title, local_marketplace{{/str}}',
+                text: '{{#str}}deleteitem_confirm_msg, local_marketplace{{/str}}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '{{#str}}confirm_yes, local_marketplace{{/str}}',
+                cancelButtonText: '{{#str}}confirm_no, local_marketplace{{/str}}'
+            }).then(function(result) {
+                if (result.value) {
+                    const form = button.closest("form");
+
+                    form.append('<input type="hidden" name="sesskey" value="{{config.sesskey}}">');
+
+                    form.submit();
+                }
+            });
+        });
+    });
+{{/js}}

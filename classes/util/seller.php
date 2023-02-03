@@ -4,7 +4,9 @@ namespace local_marketplace\util;
 
 defined('MOODLE_INTERNAL') || die();
 
+use local_marketplace\local\entities\order;
 use local_marketplace\local\exceptions\not_enrolled;
+use local_marketplace\local\exceptions\order_limitperuser;
 use moodle_url;
 use local_marketplace\local\entities\product;
 use local_marketplace\local\exceptions\product_outofstock;
@@ -36,6 +38,16 @@ class seller {
 
             if (!is_enrolled($context, $userid)) {
                 throw new not_enrolled('you_are_not_enrolled_on_course', $courseid);
+            }
+        }
+
+        if ($product->limitperuser != null) {
+            $orderentity = new order();
+
+            $userpurchases = $orderentity->count_user_product_purchases($product->id, $userid);
+
+            if ($product->limitperuser <= $userpurchases) {
+                throw new order_limitperuser('order_limitperuser', $courseid);
             }
         }
 

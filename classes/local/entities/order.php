@@ -74,4 +74,14 @@ class order extends base {
 
         return false;
     }
+
+    public function count_user_product_purchases($productid, $userid = null) {
+        global $USER, $DB;
+
+        if (!$userid) {
+            $userid = $USER->id;
+        }
+
+        return $DB->count_records($this->table, ['productid' => $productid, 'userid' => $userid]);
+    }
 }

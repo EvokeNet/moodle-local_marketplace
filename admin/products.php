@@ -28,10 +28,11 @@ if ($id) {
 
 $url = new moodle_url('/local/marketplace/admin/products.php', $params);
 
+$PAGE->set_context($context);
+
 $PAGE->set_url($url);
 $PAGE->set_title(get_string('products', 'local_marketplace'));
 $PAGE->set_heading(get_string('products', 'local_marketplace'));
-$PAGE->set_context($context);
 
 \local_marketplace\util\menu::fill_secondary_menu_with_admin_items();
 
@@ -95,14 +96,20 @@ if ($formdata = $form->get_data()) {
         $stock = (int) $formdata->stock;
     }
 
+    $limitperuser = null;
+    if ($formdata->limitperuser == 0 || $formdata->limitperuser != '') {
+        $limitperuser = (int) $formdata->limitperuser;
+    }
+
     $product = new \stdClass();
     $product->categoryid = $formdata->categoryid;
-    $product->courseid = $formdata->courseid ?: null;
+    $product->courseid = $formdata->courseid ?? null;
     $product->name = $formdata->name;
     $product->description = $formdata->description;
     $product->price = $formdata->price;
     $product->type = $formdata->type;
     $product->stock = $stock;
+    $product->limitperuser = $limitperuser;
     $product->timemodified = time();
 
     $redirecturl = new moodle_url('/local/marketplace/admin/products.php');

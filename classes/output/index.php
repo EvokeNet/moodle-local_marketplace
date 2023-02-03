@@ -29,7 +29,7 @@ class index implements renderable, templatable {
 
         return [
             'courseid' => $this->courseid,
-            'products' => $productentity->get_all_course_products($this->courseid)
+            'products' => $productentity->get_site_and_course_products($this->courseid)
         ];
     }
 }

@@ -21,7 +21,7 @@ require_capability('moodle/course:update', $context);
 
 $title = get_string('pluginname', 'local_marketplace') . ' : ' . $course->shortname;
 
-$PAGE->set_url('/local/marketplace/courseorders.php');
+$PAGE->set_url('/local/marketplace/courseproducts.php');
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 $PAGE->set_context($context);
@@ -30,7 +30,7 @@ echo $OUTPUT->header();
 
 $renderer = $PAGE->get_renderer('local_marketplace', 'admin');
 
-$contentrenderable = new \local_marketplace\output\courseorders($context, $course);
+$contentrenderable = new \local_marketplace\output\courseproducts($context, $course);
 
 echo $renderer->render($contentrenderable);
 

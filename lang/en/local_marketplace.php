@@ -23,6 +23,8 @@ $string['name'] = 'Name';
 $string['description'] = 'Description';
 $string['price'] = 'Price';
 $string['stock'] = 'Stock';
+$string['limitperuser'] = 'Limit per user';
+$string['limitperuser_help'] = 'This field defines how many times a user can purchase this product. Leave it blank to unlimited.';
 $string['unlimited'] = 'Unlimited';
 $string['category'] = 'Category';
 $string['course'] = 'Course';
@@ -33,6 +35,7 @@ $string['actions'] = 'Actions';
 $string['marketplaceorders'] = 'Evoke Marketplace orders';
 $string['orders'] = 'Orders';
 $string['courseorders'] = 'Course orders';
+$string['courseproducts'] = 'Course products';
 
 $string['categories'] = 'Categories';
 $string['category_create_button'] = 'Add a new category';
@@ -73,6 +76,7 @@ $string['errorbuy'] = 'Something went wrong while trying to finish your purchase
 $string['outofstock'] = 'Out of stock';
 $string['product_outofstock'] = 'Sorry. This product is out of stock.';
 $string['exclusivecourseproduct'] = 'Exclusive Course Product';
+$string['order_limitperuser'] = 'You reach out the purchases limit for this product';
 
 $string['mypurchases'] = 'My purchased products';
 $string['downloadyourfile'] = 'Download your file';
