@@ -43,6 +43,7 @@ class courseorders implements renderable, templatable {
             $order->humantimecreated = userdate($order->timecreated);
             $order->fullname = fullname($order);
             $order->userimage = $userutil->get_user_avatar_or_image($order->userid);
+            $order->usergroups = $userutil->get_user_groups_names($this->course->id, $order->userid);
         }
 
         return [
