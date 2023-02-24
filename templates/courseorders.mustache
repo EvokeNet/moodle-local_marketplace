@@ -1,8 +1,13 @@
 <div class="text-right">
-    <a href="{{config.wwwroot}}/local/marketplace/courseproducts.php?id={{courseid}}"
-    class="btn btn-primary">
-    {{#str}}courseproducts, local_marketplace{{/str}}
+    <a href="{{config.wwwroot}}/local/marketplace/courseproducts.php?id={{courseid}}" class="btn btn-primary">
+        {{#str}}courseproducts, local_marketplace{{/str}}
     </a>
+
+    {{#hasorders}}
+        <a href="{{config.wwwroot}}/local/marketplace/courseorders_download.php?id={{courseid}}" class="btn btn-info">
+            <i class="fa fa-cloud-download"></i> {{#str}}downloadordersreport, local_marketplace{{/str}}
+        </a>
+    {{/hasorders}}
 </div>
 
 <h3 class="mb-4">{{#str}}courseorders, local_marketplace{{/str}}</h3>

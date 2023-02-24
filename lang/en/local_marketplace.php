@@ -80,3 +80,5 @@ $string['order_limitperuser'] = 'You reach out the purchases limit for this prod
 
 $string['mypurchases'] = 'My purchased products';
 $string['downloadyourfile'] = 'Download your file';
+
+$string['downloadordersreport'] = 'Download orders report';

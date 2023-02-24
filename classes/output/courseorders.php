@@ -48,7 +48,8 @@ class courseorders implements renderable, templatable {
 
         return [
             'courseid' => $this->course->id,
-            'orders' => $orders
+            'orders' => $orders,
+            'hasorders' => true
         ];
     }
 }
