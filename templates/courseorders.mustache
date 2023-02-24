@@ -4,9 +4,15 @@
     </a>
 
     {{#hasorders}}
-        <a href="{{config.wwwroot}}/local/marketplace/courseorders_download.php?id={{courseid}}" class="btn btn-info">
-            <i class="fa fa-cloud-download"></i> {{#str}}downloadordersreport, local_marketplace{{/str}}
-        </a>
+        <div class="dropdown d-inline">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cloud-download"></i> {{#str}}downloadordersreport, local_marketplace{{/str}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{config.wwwroot}}/local/marketplace/courseorders_download.php?id={{courseid}}&format=csv">csv</a>
+                <a class="dropdown-item" href="{{config.wwwroot}}/local/marketplace/courseorders_download.php?id={{courseid}}&format=excel">excel</a>
+            </div>
+        </div>
     {{/hasorders}}
 </div>
 
