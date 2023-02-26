@@ -35,6 +35,7 @@ $string['actions'] = 'Acciones';
 $string['marketplaceorders'] = 'Traer pedidos de la Tienda';
 $string['orders'] = 'Pedidos';
 $string['courseorders'] = 'Pedidos de curso';
+$string['courseproducts'] = 'Productos de curso';
 
 $string['categories'] = 'Categorías';
 $string['category_create_button'] = 'Agregar una nueva categoría';
@@ -79,3 +80,6 @@ $string['order_limitperuser'] = 'Alcanzaste el límite de compras para este prod
 
 $string['mypurchases'] = 'Mis compras';
 $string['downloadyourfile'] = 'Descarga tu archivo';
+
+$string['downloadordersreport'] = 'Descargar informe de pedidos';
+$string['coursenoorders'] = 'Este curso aún no tiene pedidos';

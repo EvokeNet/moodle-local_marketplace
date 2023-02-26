@@ -82,3 +82,4 @@ $string['mypurchases'] = 'My purchased products';
 $string['downloadyourfile'] = 'Download your file';
 
 $string['downloadordersreport'] = 'Download orders report';
+$string['coursenoorders'] = 'This course has no orders yet';
