@@ -84,4 +84,42 @@ class order extends base {
 
         return $DB->count_records($this->table, ['productid' => $productid, 'userid' => $userid]);
     }
+
+    public function get_ordered_products_with_quantity() {
+        global $DB;
+
+        $sql = 'SELECT p.id, p.name, count(*) as quantity
+                FROM {marketplace_orders} o
+                INNER JOIN {marketplace_products} p ON p.id = o.productid
+                GROUP BY p.id';
+
+        $records = $DB->get_records_sql($sql);
+
+        if (!$records) {
+            return false;
+        }
+
+        return array_values($records);
+    }
+
+    public function get_ordered_products_by_month_with_quantity() {
+        global $DB;
+
+        $sql = 'SELECT 
+                  MONTH(FROM_UNIXTIME(timecreated)) month, 
+                  YEAR(FROM_UNIXTIME(timecreated)) year, 
+                  COUNT(*) as quantity
+                FROM {marketplace_orders}
+                GROUP BY 
+                  MONTH(FROM_UNIXTIME(timecreated)), 
+                  YEAR(FROM_UNIXTIME(timecreated))';
+
+        $records = $DB->get_records_sql($sql);
+
+        if (!$records) {
+            return false;
+        }
+
+        return array_values($records);
+    }
 }
