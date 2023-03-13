@@ -18,6 +18,12 @@
 
 <h3 class="mb-4">{{#str}}courseorders, local_marketplace{{/str}}</h3>
 
+{{^hasorders}}
+    <div class="alert alert-info" role="alert">
+        {{#str}}coursenoorders, local_marketplace{{/str}}
+    </div>
+{{/hasorders}}
+
 <div class="my-2">
     <div class="list-group">
         {{#orders}}
@@ -28,7 +34,7 @@
                     </div>
                     <div class="info d-flex align-items-center">
                         <div class="content">
-                            <h4 class="mb-0">{{fullname}}</h4>
+                            <h4 class="mb-0"><a href="{{config.wwwroot}}/local/evokegame/profile.php?id={{courseid}}&userid={{userid}}">{{fullname}}</a></h4>
                             <small class="d-block">{{email}}</small>
                             <small class="font-weight-bold">{{usergroups}}</small>
                         </div>

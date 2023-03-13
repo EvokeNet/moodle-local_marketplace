@@ -32,24 +32,22 @@ class courseorders implements renderable, templatable {
 
         $orders = $orderentity->get_orders_with_users_data($this->course->id);
 
-        if (!$orders) {
-            return [];
-        }
+        if ($orders) {
+            $userutil = new user();
 
-        $userutil = new user();
-
-        foreach ($orders as $order) {
-            $order->image = current($productentity->get_images($order->productid));
-            $order->humantimecreated = userdate($order->timecreated);
-            $order->fullname = fullname($order);
-            $order->userimage = $userutil->get_user_avatar_or_image($order->userid);
-            $order->usergroups = $userutil->get_user_groups_names($this->course->id, $order->userid);
+            foreach ($orders as $order) {
+                $order->image = current($productentity->get_images($order->productid));
+                $order->humantimecreated = userdate($order->timecreated);
+                $order->fullname = fullname($order);
+                $order->userimage = $userutil->get_user_avatar_or_image($order->userid);
+                $order->usergroups = $userutil->get_user_groups_names($this->course->id, $order->userid);
+            }
         }
 
         return [
             'courseid' => $this->course->id,
             'orders' => $orders,
-            'hasorders' => true
+            'hasorders' => !empty($orders)
         ];
     }
 }
