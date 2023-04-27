@@ -17,7 +17,7 @@ class course {
     public function get_all_select() {
         global $DB;
 
-        $sql = 'SELECT id, shortname, fullname FROM {course} WHERE visible = 1 AND id > 1 ORDER BY shortname';
+        $sql = 'SELECT id, shortname, fullname FROM {course} WHERE id > 1 ORDER BY shortname';
         $records = $DB->get_records_sql($sql);
 
         $courses = [
