@@ -39,8 +39,8 @@ class index implements renderable, templatable {
             'total_products' => $productentity->count(),
             'total_orders' => $orderentity->count(),
             'total_categories' => $categoryentity->count(),
-            'chart_line' => $chartline ?: $output->render($chartline),
-            'chart_pie' => $chartpie ?: $output->render($chartpie),
+            'chart_line' => $chartline ? $output->render($chartline) : false,
+            'chart_pie' => $chartpie ? $output->render($chartpie) : false,
         ];
     }
 }
