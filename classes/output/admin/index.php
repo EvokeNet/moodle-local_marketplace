@@ -32,12 +32,15 @@ class index implements renderable, templatable {
 
         $chartutil = new chart();
 
+        $chartline = $chartutil->get_chart_line();
+        $chartpie = $chartutil->get_chart_pie();
+
         return [
             'total_products' => $productentity->count(),
             'total_orders' => $orderentity->count(),
             'total_categories' => $categoryentity->count(),
-            'chart_line' => $output->render($chartutil->get_chart_line()),
-            'chart_pie' => $output->render($chartutil->get_chart_pie())
+            'chart_line' => $chartline ?: $output->render($chartline),
+            'chart_pie' => $chartpie ?: $output->render($chartpie),
         ];
     }
 }
